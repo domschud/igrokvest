@@ -15,11 +15,9 @@
         text-align: center;              
         }        
         .container {
-        /*border: 2px solid red;*/
         display: flex; flex-direction: column; 
         justify-content: center;
         margin: 1% auto;
-        /*width: 99vh;*/ 
         width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
         max-width: 95vw; /* Максимальна ширина дорівнює ширині вікна */
         justify-content: flex-start;
@@ -102,14 +100,13 @@
                 textElement.innerText = textEntry ? `${textEntry.textIndex}` : 'Архетип не знайдено';
                 activeTextContainer.appendChild(textElement);
             });
-
             const tiredColors = colorSequence.slice(-2);
             tiredColors.forEach(colorEntry => {
                 const colorBox = document.createElement('div');
                 colorBox.className = 'color-box';
                 colorBox.style.backgroundColor = colorEntry.color;
                 tiredColorsContainer.appendChild(colorBox);
-
+                
                 const textEntry = textColors.find(textColor => textColor.colorIndex === colorEntry.index);
                 const textElement = document.createElement('div');
                 textElement.className = 'result-item';
