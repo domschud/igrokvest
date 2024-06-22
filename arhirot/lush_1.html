@@ -19,11 +19,9 @@
             border-radius: 10px;
         }      
         .container {        
-        /*border: 2px solid gray;*/       
         display: flex; flex-direction: column; 
         justify-content: center;
         margin: 1% auto;
-        /*width: 99vh;*/ 
         width: 75%; /* Використовуємо відсоткове значення для адаптації ширини */
         max-width: 95vw; /* Максимальна ширина дорівнює ширині вікна */
         justify-content: flex-start;
@@ -41,7 +39,6 @@
             margin: 15px;
             display: inline-block;
             cursor: pointer;
-            /*border-radius: 50%;*/
         }
         #next-button {
             display: block;
@@ -72,7 +69,6 @@
   <div id="result"></div>
 </div>  
   <script>
-      // Очищення localStorage перед початком сеансу
       localStorage.clear();
       
       const colorContainer = document.getElementById('color-container');
@@ -100,7 +96,7 @@
           }
       });      
       nextButton.addEventListener('click', () => {
-          window.location.href = 'архетип_3.html';
+          window.location.href = 'lush_arh.html';
       });      
   </script>
 </body>
