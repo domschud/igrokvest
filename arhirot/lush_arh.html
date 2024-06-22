@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестування</title>
+    <style>
+        body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }     
+        #color-container {
+            background-color: white;
+            border-radius: 10px;
+        }    
+        #text-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+        }   
+        .container {
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        margin: 1% auto;
+        width: 80%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 95vw; /* Максимальна ширина дорівнює ширині вікна */
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */         
+        }
+        .color {
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        margin: 1% auto;
+        width: 90%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width:90%;
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */         
+        }
+        .charact {
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        margin: 1% auto;
+        width: 90%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width:90%;
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */         
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;
+        }
+        .color-box {
+            width: 40px;
+            height: 40px;
+            margin: 15px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .text-row {
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: grey;
+        }        
+        #next-button {
+            display: block;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="color">
+  <h1>Якого кольору ці слова?</h1>
+  <p>Перед вами 12 рядків зі словами, підберіть кожному з них найбільш підходящий колір з наявних</p>
+  <p1>Для цього клікніть спочатку на колір потім на відповідний рядок</p1>
+  <div id="color-container">
+      <div class="color-box" style="background-color: silver;" data-index="A"></div>
+      <div class="color-box" style="background-color: red;" data-index="B"></div>
+      <div class="color-box" style="background-color: green;" data-index="C"></div>
+      <div class="color-box" style="background-color: yellow;" data-index="D"></div>
+      <div class="color-box" style="background-color: blue;" data-index="E"></div>
+      <div class="color-box" style="background-color: orange;" data-index="F"></div>
+      <div class="color-box" style="background-color: purple;" data-index="G"></div>
+      <div class="color-box" style="background-color: black;" data-index="H"></div>
+      <div class="color-box" style="background-color: aqua;" data-index="I"></div>
+      <div class="color-box" style="background-color: teal;" data-index="J"></div>
+      <div class="color-box" style="background-color: pink;" data-index="K"></div>
+      <div class="color-box" style="background-color: maroon;" data-index="L"></div>
+    </div>
+</div>
+<div class="charact">
+    <div id="text-container">
+    <div class="text-row" data-index="Дитя">Буття, Довіра, Радість</div>
+    <div class="text-row" data-index="Друзяка">Дружба, Практичність, Рівність</div>
+    <div class="text-row" data-index="Герой">Сила, Концентрація, Подолання</div>
+    <div class="text-row" data-index="Опікун">Турбота, Підтримка, Розвиток</div>
+    <div class="text-row" data-index="Пошукач">Пошук, Враження, Автономність</div>
+    <div class="text-row" data-index="Бунтар">Протистояння, Помста, Виклик</div>
+    <div class="text-row" data-index="Люблячий">Краса, Пристрасть, Задоволення</div>
+    <div class="text-row" data-index="Творець">Створення, Оригінальність, Нове</div>
+    <div class="text-row" data-index="Правитель">Відповідальність, Контроль, Управління</div>
+    <div class="text-row" data-index="Маг">Зміни, Інтуїція, Небачене</div>
+    <div class="text-row" data-index="Мудрець">Сенс, Логіка, Знання</div>
+    <div class="text-row" data-index="Шут">Розвага, Гра, Хаос</div>
+    </div>
+    <p>(перевірте, що всі рядки зі словами розфарбовані перед тим, як йти далі)</p>
+  <button id="next-button">Далі</button>
+  <div id="result"></div>
+</div>
+</div>
+  <script>
+    function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+      const textContainer = document.getElementById('text-container');
+      const textRows = Array.from(textContainer.children);
+      const shuffledTextRows = shuffle(textRows);
+    textContainer.innerHTML = '';
+    shuffledTextRows.forEach(row => textContainer.appendChild(row));
+      let textColors = [];
+      const colorBoxes = document.querySelectorAll('.color-box');
+      const nextButton = document.getElementById('next-button');     
+      let selectedColor = null;
+      let selectedColorIndex = null;
+
+    colorBoxes.forEach((colorBox) => {
+          colorBox.addEventListener('click', () => {
+              selectedColor = colorBox.style.backgroundColor;
+              selectedColorIndex = colorBox.getAttribute('data-index');
+          });
+      });
+    textRows.forEach((textRow) => {
+        textRow.addEventListener('click', () => {
+            if (selectedColor) {
+                textRow.style.color = selectedColor;
+                const textIndex = textRow.getAttribute('data-index');
+                textColors = textColors.filter(item => item.textIndex !== textIndex);
+                textColors.push({ colorIndex: selectedColorIndex, color: selectedColor, textIndex: textIndex, text: textRow.textContent });
+                selectedColor = null; // Скидання вибраного кольору після присвоєння
+                selectedColorIndex = null; // Скидання вибраного індексу кольору після присвоєння                
+            }
+        });
+    });
+    nextButton.addEventListener('click', () => {
+          localStorage.removeItem('textColors');
+          localStorage.setItem('textColors', JSON.stringify(textColors));
+          window.location.href = 'visn.html';
+    });
+  </script>
+</body>
+</html>
