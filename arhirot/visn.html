@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат</title>
+    <style>
+       body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;              
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        margin: 1% auto;
+        /*width: 99vh;*/ 
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 95vw; /* Максимальна ширина дорівнює ширині вікна */
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */         
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;       
+        }
+        .color-box {
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        #active-text {
+            font-size: x-large;
+            color: maroon;
+        }
+        #tired-text {
+            font-size: x-large;
+            color: maroon;
+        }
+        .prim {
+        justify-content: center;
+        margin: 1% auto;
+        width: 70%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */ 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div id="active">
+        <h2>Ваші активні архетипи:</h2>
+        <p class="prim">(тобто ті, що зараз повноцінно функціонують, включаючись за ситуацією і на функції-якості яких ви можете спиратись)</p>
+        <div id="active-colors"></div>
+        <div id="active-text"></div>
+    </div>
+    <div id="tired">
+        <h2>Ваші "втомлені" архетипи:</h2>
+        <p class="prim">(ті, що в даний момент знаходяться в пригніченому стані або виснажені надто активним використанням, чи, як варіант, бажані, але на даний момент ви не дозволяєте їм проявлятись)</p>
+        <div id="tired-colors"></div>
+        <div id="tired-text"></div>
+    </div>
+</div>
+    <script>
+        function displayResults() {
+            const colorSequence = JSON.parse(localStorage.getItem('colorSequence')) || [];
+            const textColors = JSON.parse(localStorage.getItem('textColors')) || [];
+            const activeColorsContainer = document.getElementById('active-colors');
+            const activeTextContainer = document.getElementById('active-text');
+            const tiredColorsContainer = document.getElementById('tired-colors');
+            const tiredTextContainer = document.getElementById('tired-text');
+
+            activeColorsContainer.innerHTML = '';
+            activeTextContainer.innerHTML = '';
+            tiredColorsContainer.innerHTML = '';
+            tiredTextContainer.innerHTML = '';
+
+             const activeColors = colorSequence.slice(0, 3);
+            activeColors.forEach(colorEntry => {
+                const colorBox = document.createElement('div');
+                colorBox.className = 'color-box';
+                colorBox.style.backgroundColor = colorEntry.color;
+                activeColorsContainer.appendChild(colorBox);
+
+                const textEntry = textColors.find(textColor => textColor.colorIndex === colorEntry.index);
+                const textElement = document.createElement('div');
+                textElement.className = 'result-item';
+                textElement.innerText = textEntry ? `${textEntry.textIndex}` : 'Архетип не знайдено';
+                activeTextContainer.appendChild(textElement);
+            });
+
+            const tiredColors = colorSequence.slice(-2);
+            tiredColors.forEach(colorEntry => {
+                const colorBox = document.createElement('div');
+                colorBox.className = 'color-box';
+                colorBox.style.backgroundColor = colorEntry.color;
+                tiredColorsContainer.appendChild(colorBox);
+
+                const textEntry = textColors.find(textColor => textColor.colorIndex === colorEntry.index);
+                const textElement = document.createElement('div');
+                textElement.className = 'result-item';
+                textElement.innerText = textEntry ? `${textEntry.textIndex}` : 'Архетип не знайдено';
+                tiredTextContainer.appendChild(textElement);
+            });
+        }
+        displayResults();
+    </script>
+</body>
+</html>
