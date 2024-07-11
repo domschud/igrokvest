@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Другий етап</title>
+    <style>
+        .container2 {
+            margin: 5px auto;
+        }
+        .pair {
+            margin-bottom: 15px;
+            /*font-weight: bold;*/
+            font-size: larger;
+        }
+        .or {
+            font-style: italic;
+            font-weight: bold;
+            font-size: large;
+            color: green;
+
+        }
+        body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: row; 
+        justify-content: center;
+        justify-content: flex-start;
+        margin: 1% auto;
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        min-width: 50vh;       
+        margin-top: 0;
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;
+        font-size: x-large;
+        }
+        h2 {
+        color: maroon;
+        }
+        p{
+          font-size: larger;
+        }
+        p2 {
+        color: maroon;
+        font-size: large;
+        }                
+        #nextButton {
+        margin: 5px auto; /* Вирівнювання кнопки по центру горизонтально */
+        padding: 7px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 10px;
+        background-color: aliceblue;
+        max-height: 25vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+    <div class="container2">
+        <h2>Чудово, з пріоритетами впоралися, тепер другий етап:</h2>
+        <p2>Ваша нова діяльність захопила вас, ви пишаєтесь собою і задоволені тим, що й як створюєте…</p2>
+        <p></p>
+        <p2>Не дивно, що ваші вироби/послугу люблять і охоче купують.</p2>
+        <p></p>
+        <p2>Як ви думаєте,<span style="font-size: 20px; font-weight: 600; color: green;">користувачам воно дає більше чого?</span></p2>
+        <p></p>
+        <p2>(Виберіть в кожній парі те твердження, що підходить більше, ніж друге)</p2>
+        <p></p>
+
+        <form id="statementForm">
+            <div class="pair">
+                <label><input type="radio" name="pair1" value="Опікун"> Підкреслює важливість турботи про себе та оточуючих </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair1" value="Бунтар"> Руйнує застаріле та не потрібне, революційне </label><br>
+            </div>
+            <div class="pair">
+                <label><input type="radio" name="pair2" value="Опікун"> Підтримує тему сім’ї, здоров’я, харчування й освіти </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair2" value="Герой"> Показує на що здатна людина, робить наголос на справедливості й підтримці важкої роботи </label><br>
+            </div>
+            <div class="pair">
+                <label><input type="radio" name="pair3" value="Герой"> Фокусується на подоланні перешкод, або перемозі над чимось, як варіант соц.проблемами </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair3" value="Дитя"> Підтримує прості життєві цінності, здоров’я й нескінченно відтворюються </label><br>
+            </div>
+            <div class="pair">
+                <label><input type="radio" name="pair4" value="Люблячий"> Заохочує до краси, спілкування між людьми, близькості, романтики </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair4" value="Дитя"> Асоціюється з безтурботністю та добротою, ностальгією й доброчесністю </label><br>
+            </div>
+            <div class="pair">
+                <label><input type="radio" name="pair5" value="Люблячий"> Надає персональну увагу, відчуття «особливості» себе, обіцяє придбання любові та дружби </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair5" value="Мудрець"> Пропонує інформацію та досвід </label><br>
+            </div>
+            <div class="pair">
+                <label><input type="radio" name="pair6" value="Мудрець"> Спонукає до роздумів, спираючись на наукові розробки та знання </label> <span class="or"> чи </span>
+                <label><input type="radio" name="pair6" value="Шут"> Створене для відпочинку та розваг </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair7" value="Пошукач"> Приносить відчуття свободи, унікальності й нові враження </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair7" value="Правитель"> Допомагає впорядкуванню, стабільності у хаотичному світі </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair8" value="Пошукач"> Багатофункціональне, міцне, зручне для дороги та на природі </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair8" value="Друзяка"> Надає відчуття приналежності й відповідності якійсь групі </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair9" value="Правитель"> Послуга(продукт) має регулювальну та захису функцію або підтверджує лідерство й статус людини </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair9" value="Маг"> Обіцяє змінити(перетворити) людину або щось в її житті </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair10" value="Маг"> Використовує духовні чи психологічні компоненти, розширює межі свідомості </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair10" value="Творець"> Дозволяє особисто приймати участь в процесі створення, виявляе творчі здібності </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair11" value="Творець"> Сприяє самопрояву та художньому оформленню інновацій </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair11" value="Шут"> Дозволяє відчути свою причетність до чогось бІльшого, значного </label><br>
+            </div>
+            <div class="pair">
+              <label><input type="radio" name="pair12" value="Бунтар"> Кидає виклик стереотипам, шаблонним правилам, або підтримує непопулярне, осуджувані теми та людей </label> <span class="or"> чи </span>
+              <label><input type="radio" name="pair12" value="Друзяка"> Практичне й використовується в побуті </label><br>
+            </div>
+        </form>
+        <button id="nextButton">Далі</button>
+        <div id="result"></div>
+    </div>
+</div>
+
+    <script>
+        // Очищення localStorage перед початком сеансу
+        localStorage.removeItem('para');
+        document.getElementById('statementForm').reset();
+
+        const nextButton = document.getElementById('nextButton');
+        const resultContainer = document.getElementById('result');
+
+        nextButton.addEventListener('click', () => {
+            const form = document.getElementById('statementForm');
+            const formData = new FormData(form);
+            const selectedPairs = {};
+
+            for (let [name, value] of formData.entries()) {
+                selectedPairs[name] = value;
+            }
+
+            if (Object.keys(selectedPairs).length < 12) {
+                alert('Йой, пошукайте пропущену пару');
+                return;
+            }
+
+            const para = [];
+            for (let key in selectedPairs) {
+                para.push({ pair: key, index: selectedPairs[key] });
+            }
+
+            localStorage.setItem('para', JSON.stringify(para));
+            setTimeout(() => {
+                window.location.href = 'arh_fin5.html';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
