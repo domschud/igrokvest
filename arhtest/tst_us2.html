@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Архі-тестування</title>
+<style>
+  body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: row; 
+        justify-content: center;
+        margin: 1% auto;
+        /*width: 85vh; */
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        min-width: 50vh;
+        justify-content: flex-start;
+        margin-top: 0; 
+        flex-wrap: wrap; /* Заворотка на новий рядок при необхідності */         
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;
+        font-size: x-large;
+        color: maroon;
+        }
+        p{
+          font-size: large;
+        }
+        button {
+        margin: 5px auto; /* Вирівнювання кнопки по центру горизонтально */
+        padding: 7px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 10px;
+        background-color: aliceblue;
+        max-height: 25vh;
+        }
+</style>
+</head>
+<body>
+  <h1>Добре, бачення себе трохи освіжили і продовжуємо далі...</h1>
+  
+  <div class="container">
+  <div class="text-container" id="text">
+    <p> </p>
+    <p></p>
+    <p>Тепер зосередьтесь на цій думці, що <span style="font-size: 20px; font-weight: 600; color: green;">незалежно від сфери діяльності, ви постійно продукуєте «дещо» для інших людей</span>: це може бути щось нематеріальне, таке як емоційна підтримка, гарний настрій, знання, ясність думок, якісь ідеї, чи щось пов’язане з конкретними діями, рухом, прийняттям рішень, турботою, продажем, зв’язками, послугами чи щось, що має матеріальну форму – приготування їжі, створення музики, зачіски, дизайну, витвору мистецтва чи аналітичного звіту…</p>
+    <p> Хоча реальне життя впливає обставинами, стереотипами, звичними моделями та особистим досвідом, але в уяві ми вільні…</p>  
+    <p>
+      <span style="font-size: 20px; font-weight: 600; color: green;">Тільки уявіть</span>, в один прекрасний день ви отримуєте анонімну пропозицію: стати власником невеличкого підприємства. Але є деякі умови: 
+      <p>-	ви маєте особисто його очолювати й розвивати, тому те, що ви «виробляєте» (продукт чи послуга) має бути вам справді цікаве і важливе;</p>
+      <p>-	ви можете все облаштувати і налагодити, як вам подобається, бо бюджет і інформаційна підтримка без обмежень, але їх не можна використати на щось інше.</p>
+      <p></p>
+      <p>Тож щоб ви вибрали? Дайте собі трохи часу уявити подробиці – яким би воно було? </p>
+      <p></p>
+      <p><span style="font-size: 20px; font-weight: 600; color: green;">І що, вам би хотілося, щоб воно приносило іншим людям?</span> Які можливості давало?</p>    
+      
+    </div>
+  <br>
+  <button onclick="handleNext()">Продовжити тестування</button>
+</div>
+<script>
+function handleNext() {
+window.location.href = 'arh_pd3.html'; }
+</script>
+</body>
+</html>
