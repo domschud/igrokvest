@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ранжування</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        justify-content: flex-start;
+        margin: 3% auto;
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        min-width: 50vh;       
+        margin-top: 0;
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;
+        font-size: x-large;
+        color: maroon;
+        }
+        p2 {
+        color: maroon;
+        font-size: large;
+        }
+        p{
+          font-size: x-large;
+        }
+        .statement{
+            font-size: larger;
+            margin-top: 20px;
+        }
+        
+        button {
+        margin: 5px auto; /* Вирівнювання кнопки по центру горизонтально */
+        padding: 7px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 10px;
+        background-color: aliceblue;
+        max-height: 25vh;
+        }
+        #initial {
+        margin: 5px auto;
+        }
+        #initial2{
+          margin: 10px auto;
+        }
+        #sorted {
+        margin: 5px auto;
+        }
+input {
+    max-width: 50px;
+}
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ранжування тверджень</title>
+</head>
+<body>
+    <div class="container">
+      <div id="initial2">
+        <h1>Перший етап тестування: розташуйте твердження за пріоритетом від найближчого до найменш схожого:</h1>
+        <p2>Яке твердження <span style="font-size: 20px; font-weight: 600; color: green;">найбільше схоже на вас?</span> Ви справді можете про себе так сказати.</p2>
+        <p></p>
+        <p></p>
+        <p2>(Для цього присвойте цифру 1 – найближчому до вас опису, а 12 – тому, що «взагалі не про мене»)</p2>
+      </div>
+    <div id="initial">        
+        <div class="statement" data-index="Правитель"> Я – відповідальний, ціную якість та повагу, часто бачу вигоду та як можна зробити справу ефективнішою, порядок і правила допомагають мені керувати. Не люблю коли люди лінуються чи задарма витрачають час. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Маг"> Я – змінюю, слухаю інтуїцію, взаємодію з таємним й прихованим, спостерігаю незбагненне, розширюючи свідомість. Трансформую внутрішній стан, перетворюю речі, а буває, що і здійснюю бажання. Навколо стаються дива. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Бунтар"> Я – не такий, як інші, мене постійно бісять ті, хто надто правильний і вихований. Я не боюсь сперечатись та провокувати оточуючих. На мені постійно ламається система, я бачу застаріле, що пора знищити, я – ходячий виклик суспільним стереотипам <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Герой"> Я – можу, я відчуваю свою силу, концентруюсь на цілі і досягаю її. Спорт і дисципліна допомагають мені по життю. Легко захищу меншого та слабшого: випробування та перешкоди це не проблема - лише зібрати силу волі в кулак і я попереду. Та іноді на мене скидають всі завали. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Люблячий"> Я – привабливий, мені подобається відчувати себе особливим. Я бачу красиве і гармонійне. Я насолоджуюсь тонкими смаками, ароматами, стилем, а моя чуттєвість страждає серед несмаку й негарних речей. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Шут"> Я – вмію розважатись й жартувати. І вам дістанеться, бо терпіти не можу занудну атмосферу. Іронізувати над собою не страшно, я переконаний, що завжди є час на шоу, щонайменше трошки повеселитись. Неочікуване – це те, що треба! <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Дитя"> Я – відкритий життю, щиро радію добрим і позитивним дрібничкам. Мені подобається, коли все просто і легко та довіряти світу. Не люблю коли щось надто важке чи складне, побоююсь покарання за помилки. Хочу просто трохи розслабитись й не турбуватись через проблеми. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Творець"> Я – створюю, мені подобається самому придумувати та втілювати щось новеньке, так, як ще ніхто не робив. Я прагну надати ідеям оригінальної форми, яскраво показати себе та, буває, що мрію залишити нащадкам дещо унікальне. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Друзяка"> Я – чудовий друг, вмію знаходити спільну мову. Люблю душевне, приязне спілкування й збиратись разом. Ціную традиції та практичні речі, без вибриків. Постараюсь, щоб всі отримували порівну та прагну не вирізнятись серед своїх. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Пошукач"> Я – цікавлюсь, шукаю нові шляхи, враження, пригоди, відповіді. Мене вабить відчуття свободи та відкриття. Я постійно щось пробую, змінюю захоплення й інтереси, рушаю в дослідження як реальне так і віртуальне. Збираю скарби. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Опікун"> Я – оберігаю, оточую безпекою і турботою, допомагаю відновитись, зростати, розвивати здібності та навчатись. Я огортаю увагою і підтримкою того, ким зараз опікуюсь, я відчуваю потреби інших людей, та іноді надто їх контролюю. <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Мудрець"> Я – думаю, все аналізую, заглиблююсь у теорії, накопичую й структурую знання та докази, намагаюсь зрозуміти суть речей. Світ складний, це система, де все має логічне пояснення. Не виношу невігластво та дурість.  <input type="number" min="1" max="12"></div>
+        <p></p>
+        <button id="next">Далі</button>
+    </div>
+    <div id="sorted" style="display:none;">
+      <h1>Це ваш вибір:</h1>
+      <p2>(Передивіться створену вами послідовність - якщо ви хочете її змінити, клікніть на стрілочку, щоб пересунути вгору чи вниз відповідне твердження)</p2>
+        <ul id="sorted-statements"></ul>
+        <button id="final-next">Далі</button>      
+    </div>
+</div>    
+</div>
+<script>
+  function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+  }
+  // Очищення локального сховища та полів вводу перед завантаженням сторінки
+  window.onload = () => {
+      localStorage.clear();
+      document.querySelectorAll('input').forEach(input => input.value = '');
+
+      // Get the statements and shuffle them
+      const initial = document.getElementById('initial');
+      const statements = Array.from(initial.getElementsByClassName('statement'));
+
+      // Shuffle the statement rows
+      const shuffledStatements = shuffle(statements);
+      statements.forEach(statement => statement.parentNode.removeChild(statement)); // Remove all statements
+      shuffledStatements.forEach(row => initial.insertBefore(row, initial.querySelector('button'))); // Insert statements before the button
+  };
+
+  document.getElementById('next').addEventListener('click', () => {
+      let statements = document.querySelectorAll('.statement');
+      let rankings = {};
+      let uniqueNumbers = new Set();
+
+      for (let statement of statements) {
+          let input = statement.querySelector('input');
+          let value = input.value.trim();
+          let index = statement.getAttribute('data-index');
+
+          if (value && !isNaN(value) && value >= 1 && value <= 12) {
+              if (uniqueNumbers.has(value)) {
+                  alert('Йой, здається ви десь пропустили чи продублювали значення');
+                  return;
+              }
+              uniqueNumbers.add(value);
+              rankings[index] = parseInt(value);
+          } else {
+              alert('Йой, здається ви десь пропустили чи продублювали значення');
+              return;
+          }
+      }
+      if (uniqueNumbers.size !== 12) {
+          alert('Йой, здається ви десь пропустили чи продублювали значення');
+          return;
+      }
+      localStorage.setItem('Osb', JSON.stringify(rankings));
+
+      document.getElementById('initial').style.display = 'none';
+      document.getElementById('initial2').style.display = 'none';
+      document.getElementById('sorted').style.display = 'block';
+
+      let sortedStatements = Object.keys(rankings).sort((a, b) => rankings[a] - rankings[b]);
+      let sortedList = document.getElementById('sorted-statements');
+      sortedList.innerHTML = ''; // Clear previous sorted statements
+
+      for (let index of sortedStatements) {
+          let statementText = document.querySelector(`.statement[data-index="${index}"]`).textContent.trim();
+          let li = document.createElement('li');
+          li.innerHTML = `${statementText} <button class="move-up" onclick="moveUp(this)">↑</button> <button class="move-down" onclick="moveDown(this)">↓</button>`;
+          li.setAttribute('data-index', index);
+          sortedList.appendChild(li);
+      }
+  });
+
+  function moveUp(button) {
+      let li = button.parentElement;
+      let prev = li.previousElementSibling;
+      if (prev) {
+          li.parentNode.insertBefore(li, prev);
+      }
+  }
+
+  function moveDown(button) {
+      let li = button.parentElement;
+      let next = li.nextElementSibling;
+      if (next) {
+          li.parentNode.insertBefore(next, li);
+      }
+  }
+
+  document.getElementById('final-next').addEventListener('click', () => {
+      let finalRankings = {};
+      let sortedList = document.getElementById('sorted-statements').children;
+      for (let i = 0; i < sortedList.length && i < 5; i++) {
+          let index = sortedList[i].getAttribute('data-index');
+          finalRankings[index] = i + 1;
+      }
+      localStorage.clear();
+      localStorage.setItem('Osb', JSON.stringify(finalRankings));
+
+      setTimeout(() => {
+          window.location.href = 'start_tst_um.html';
+      }, 500);
+  });
+</script>
+</body>
+</html>
