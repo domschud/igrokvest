@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ранжування</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        justify-content: flex-start;
+        margin: 3% auto;
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        min-width: 50vh;       
+        margin-top: 0;
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px;
+        font-size: x-large;
+        color: maroon;
+        }
+        p2 {
+        color: maroon;
+        font-size: large;
+        }
+        p{
+          font-size: x-large;
+        }
+        .statement{
+            font-size: larger;
+            margin-top: 20px;
+        }
+        
+        button {
+        margin: 5px auto; /* Вирівнювання кнопки по центру горизонтально */
+        padding: 7px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 10px;
+        background-color: aliceblue;
+        max-height: 25vh;
+        }
+        #initial {
+        margin: 5px auto;
+        }
+        #initial2{
+          margin: 10px auto;
+        }
+        #sorted {
+        margin: 5px auto;
+        }
+input {
+    max-width: 50px;
+}
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ранжування тверджень</title>
+</head>
+<body>
+    <div class="container">
+      <div id="initial2">
+        <h1>Розташуйте твердження за пріоритетом від найважливішого до найменш потрібного:</h1>
+        <p2>Що вам хотілося б, щоб <span style="font-size: 20px; font-weight: 600; color: green;">отримували користувачі </span>вашого продукту чи послуги?</p2>
+        <p></p>
+        <p2><span style="font-size: 20px; font-weight: 800; color: green;">Щоб вони…?</span></p2>
+        <p></p>
+        <p2>(Для цього присвойте цифру 1 – найважливішому твердженню, а 12 – тому, що «ну і ладно, не дуже-то й потрібно»)</p2>
+      </div>
+    <div id="initial">        
+        <div class="statement" data-index="Правитель">Отримали успіх, або стабільність й розквіт<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Маг">Здійснили мрії, або змінили себе та світ навколо<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Бунтар">Зруйнували старе - те, що не працює, або влаштували революцію <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Герой">Подолали свої перешкоди, або проявили силу духу та мужність перед обставинами<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Люблячий">Змогли насолодитися атмосферою, або отримали задоволення від краси та витонченості<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Шут">Веселилися прямо зараз, відкинули нудьгу, або добре провели час<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Дитя">Раділи простим речам, буттю й життю прямо зараз<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Творець">Створили нове, те чого ще не існувало, або надали унікальну форму своїм ідеям<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Друзяка">Відчули себе серед "своїх", отримали підтримку, або дотримувалися звичаїв<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Пошукач">Отримали можливість вільно проявляти індивідуальність, або вирушили на пошуки себе <input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Опікун">З турботою та терпінням отримували навички й уміння, або допомагали зростати та розвиватися<input type="number" min="1" max="12"></div>
+        <p></p>
+        <div class="statement" data-index="Мудрець">Дізналися істину, або структурували свої знання та розуміння суті <input type="number" min="1" max="12"></div>
+        <p></p>
+        <button id="next">Далі</button>
+    </div>
+    <div id="sorted" style="display:none;">
+      <h1>Це ваш вибір:</h1>
+      <p2>(Передивіться створену вами послідовність - якщо ви хочете її змінити, клікніть на стрілочку, щоб пересунути вгору чи вниз відповідне твердження)</p2>
+        <ul id="sorted-statements"></ul>
+        <button id="final-next">Далі</button>      
+    </div>
+</div>    
+</div>
+<script>
+  function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+  }
+  // Очищення локального сховища та полів вводу перед завантаженням сторінки
+  window.onload = () => {
+    localStorage.removeItem('range');
+      document.querySelectorAll('input').forEach(input => input.value = '');
+
+      // Get the statements and shuffle them
+      const initial = document.getElementById('initial');
+      const statements = Array.from(initial.getElementsByClassName('statement'));
+
+      // Shuffle the statement rows
+      const shuffledStatements = shuffle(statements);
+      statements.forEach(statement => statement.parentNode.removeChild(statement)); // Remove all statements
+      shuffledStatements.forEach(row => initial.insertBefore(row, initial.querySelector('button'))); // Insert statements before the button
+  };
+
+  document.getElementById('next').addEventListener('click', () => {
+      let statements = document.querySelectorAll('.statement');
+      let rankings = {};
+      let uniqueNumbers = new Set();
+
+      for (let statement of statements) {
+          let input = statement.querySelector('input');
+          let value = input.value.trim();
+          let index = statement.getAttribute('data-index');
+
+          if (value && !isNaN(value) && value >= 1 && value <= 12) {
+              if (uniqueNumbers.has(value)) {
+                  alert('Йой, здається ви десь пропустили чи продублювали значення');
+                  return;
+              }
+              uniqueNumbers.add(value);
+              rankings[index] = parseInt(value);
+          } else {
+              alert('Йой, здається ви десь пропустили чи продублювали значення');
+              return;
+          }
+      }
+      if (uniqueNumbers.size !== 12) {
+          alert('Йой, здається ви десь пропустили чи продублювали значення');
+          return;
+      }
+      localStorage.setItem('range', JSON.stringify(rankings));
+
+      document.getElementById('initial').style.display = 'none';
+      document.getElementById('initial2').style.display = 'none';
+      document.getElementById('sorted').style.display = 'block';
+
+      let sortedStatements = Object.keys(rankings).sort((a, b) => rankings[a] - rankings[b]);
+      let sortedList = document.getElementById('sorted-statements');
+      sortedList.innerHTML = ''; // Clear previous sorted statements
+
+      for (let index of sortedStatements) {
+          let statementText = document.querySelector(`.statement[data-index="${index}"]`).textContent.trim();
+          let li = document.createElement('li');
+          li.innerHTML = `${statementText} <button class="move-up" onclick="moveUp(this)">↑</button> <button class="move-down" onclick="moveDown(this)">↓</button>`;
+          li.setAttribute('data-index', index);
+          sortedList.appendChild(li);
+      }
+  });
+
+  function moveUp(button) {
+      let li = button.parentElement;
+      let prev = li.previousElementSibling;
+      if (prev) {
+          li.parentNode.insertBefore(li, prev);
+      }
+  }
+
+  function moveDown(button) {
+      let li = button.parentElement;
+      let next = li.nextElementSibling;
+      if (next) {
+          li.parentNode.insertBefore(next, li);
+      }
+  }
+
+  document.getElementById('final-next').addEventListener('click', () => {
+      let finalRankings = {};
+      let sortedList = document.getElementById('sorted-statements').children;
+      for (let i = 0; i < sortedList.length && i < 4; i++) {
+          let index = sortedList[i].getAttribute('data-index');
+          finalRankings[index] = i + 1;
+      }
+      localStorage.removeItem('para');
+      localStorage.setItem('range', JSON.stringify(finalRankings));
+
+      setTimeout(() => {
+          window.location.href = 'arh_pr4.html';
+      }, 500);
+  });
+</script>
+</body>
+</html>
