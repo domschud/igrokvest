@@ -64,7 +64,7 @@
 </div>
 <script>
 function handleNext() {
-window.location.href = 'gpt_arh_osb_rand.html'; }
+window.location.href = 'arh_os.html.html'; }
 </script>
 </body>
 </html>
