@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат</title>
+    <style>
+        .result {
+            margin-top: 20px;
+        }
+        body {
+        background-image: url('005.jpg');
+        background-repeat: repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Segoe Script, sans-serif;
+        text-align: center;        
+        }        
+        .container {
+        /*border: 2px solid red;*/
+        display: flex; flex-direction: column; 
+        justify-content: center;
+        justify-content: flex-start;
+        margin: 1% auto;
+        width: 85%; /* Використовуємо відсоткове значення для адаптації ширини */
+        max-width: 85vw; /* Максимальна ширина дорівнює ширині вікна */
+        min-width: 50vh;       
+        margin-top: 0;
+        }
+        h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin: 8px auto;
+        font-size: x-large;
+        }
+        p{
+          font-size: larger;
+        }
+        p2{
+            color: maroon;
+          font-size: larger;
+        }
+        p3{
+          font-size: smaller;
+        }
+        #result {
+            margin: 5px auto;
+        }
+        #one {
+            font-size: larger;
+            color: maroon; 
+        }
+         #two {
+            color: maroon;
+        }
+        .index {
+            color: black;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        .index2 {
+            color: black;
+            font-weight: bold;
+            font-size: larger;
+        }
+        .index-image {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 506px;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Результати вашого тестування:</h1>
+    <div class="container">
+      <div id="result">
+        <div id="one"></div>
+        <p></p>
+        <div id="two"></div>
+        <p></p>
+        <div id="three"></div>
+      </div>     
+    </div>
+      <div class="container">
+      <p></p>
+      <p></p>
+      <p2>Це тестування проявляє ваші актуальні на даний момент цінності та мотиви. Те, що ви сприймаєте самі та готові давати оточуючим.</p2>
+        <p></p>
+        <p2>Для підтвердження виявлених архетипів на роль ведучих потрібне додаткове свідоме спостереженння: як риси кожного з вищеназваних архетипів реалізуються в різних ситуаціях - наскільки легко вам даються та як довго ви можете занурюватись в цю роль.</p2>
+        <p></p>
+    <p2>Також можливі ситуації коли ведучі архетипи практично не проявляються у зовнішній діяльності, але постійно присутні у особистому житті людини</p2>
+      <p></p>    
+      </div>
+      <p3>Для знайомства чи більш детального занурення у тему архетипів, їх рис, мотивів і можливостей підписуйтесь на блог <a href="https://forms.gle/hwFjxp3pNXAWg8d19" style="color: blue;">"Мандри в дзеркалі"</a> </p3>  
+      <!-- Модальне вікно -->
+    <div id="modal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg">
+      <div id="caption"></div>
+    </div>    
+    <script>
+      // Масиви для зображень
+      let Avt = [
+          {index: "Творець", src: "tvr_m.png"},
+          {index: "Маг", src: "mag_m.png"},
+          {index: "Дитя", src: "prs_m.png"},
+          {index: "Друзяка", src: "slv_m.png"},
+          {index: "Шут", src: "sht_m.png"},
+          {index: "Мудрець", src: "mdr_m.png"},
+          {index: "Герой", src: "her_m.png"},
+          {index: "Правитель", src: "prv_m.png"},
+          {index: "Пошукач", src: "isk_m.png"},
+          {index: "Бунтар", src: "bnt_m.png"},
+          {index: "Люблячий", src: "lbl_m.png"},
+          {index: "Опікун", src: "opk_m.png"}
+          // додайте інші значення
+      ];
+      
+      let Arh = [
+      {index: "Творець", src: "tvr_o.jpg"},
+          {index: "Маг", src: "mag_o.jpg"},
+          {index: "Дитя", src: "prs_o.jpg"},
+          {index: "Друзяка", src: "clml_o.jpg"},
+          {index: "Шут", src: "sht_o.jpg"},
+          {index: "Мудрець", src: "mdr_o.jpg"},
+          {index: "Герой", src: "hero_o.jpg"},
+          {index: "Правитель", src: "prav_o.jpg"},
+          {index: "Пошукач", src: "isk_o.jpg"},
+          {index: "Бунтар", src: "bntr_o.jpg"},
+          {index: "Люблячий", src: "lubl_o.jpg"},
+          {index: "Опікун", src: "opek_o.jpg"}
+          // додайте інші значення
+      ];
+  
+      // Отримуємо дані зі сховищ
+      let osbData = localStorage.getItem('Osb');
+      let rangeData = localStorage.getItem('range');
+      let paraData = localStorage.getItem('para');
+  
+      if (osbData && rangeData && paraData) {
+          let osbArray = Object.keys(JSON.parse(osbData)); // Масив індексів зі сховища Osb
+          let rangeObject = JSON.parse(rangeData); // Об'єкт з індексами зі сховища range
+          let paraArray = JSON.parse(paraData); // Масив об'єктів зі сховища para
+  
+          let oneIndexes = [];
+          let twoIndexes = [];
+          let threeIndexes = [];
+  
+          // Порівняння індексів у Osb
+          osbArray.forEach(indexToFind => {
+              if (rangeObject.hasOwnProperty(indexToFind)) {
+                  // Порівняння індексів у range та para
+                  let count = 0;
+                  paraArray.forEach(item => {
+                      if (item.index === indexToFind) {
+                          count++;
+                      }
+                  });
+  
+                  if (count === 2) {
+                      oneIndexes.push(indexToFind);
+                  } else if (count === 1) {
+                      twoIndexes.push(indexToFind);
+                  } else {
+                      threeIndexes.push(indexToFind);
+                  }
+              } else {
+                  threeIndexes.push(indexToFind);
+              }
+          });
+  
+          // Функція для створення зображень
+          function createImageElement(index) {
+              let imageElement = document.createElement('img');
+              let avtImage = Avt.find(item => item.index === index);
+              if (avtImage) {
+                  imageElement.src = avtImage.src;
+                  imageElement.alt = index;
+                  imageElement.classList.add('index-image');
+                  imageElement.addEventListener('click', () => {
+                      let arhImage = Arh.find(item => item.index === index);
+                      if (arhImage) {
+                          let modal = document.getElementById("modal");
+                          let modalImg = document.getElementById("modalImg");
+                          modal.style.display = "block";
+                          modalImg.src = arhImage.src;
+                          document.getElementById("caption").innerText = index;
+                      }
+                  });
+              }
+              return imageElement;
+          }
+  
+               // Вивід результатів на сторінку
+      if (oneIndexes.length > 0) {
+          let oneContent = "Архетипи, які з великою ймовірністю є в першій трійці: ";
+          document.getElementById('one').innerHTML = oneContent;
+          oneIndexes.forEach((index, idx) => {
+              let span = document.createElement('span');
+              span.classList.add('index');
+              span.textContent = index;
+              document.getElementById('one').appendChild(span);
+              document.getElementById('one').appendChild(createImageElement(index));
+          });
+      } else {
+          document.getElementById('one').textContent = "Претендентів на ведучі позиції не виявлено";
+      }
+
+      if (twoIndexes.length > 0) {
+          let twoContent = "Менш проявлені архетипи, але які можуть бути серед ведучих: ";
+          document.getElementById('two').innerHTML = twoContent;
+          twoIndexes.forEach((index, idx) => {
+              let span = document.createElement('span');
+              span.classList.add('index2');
+              span.textContent = index;
+              document.getElementById('two').appendChild(span);
+              document.getElementById('two').appendChild(createImageElement(index));
+          });
+      } else {
+          document.getElementById('two').textContent = "Допоміжних претендентів на ведучі позиції не виявлено";
+      }
+
+      if (threeIndexes.length > 0) {
+          let threeContent = "Архетипи, що більше орієнтовані на власні потреби: ";
+          document.getElementById('three').innerHTML = threeContent;
+          threeIndexes.forEach((index, idx) => {
+              let span = document.createElement('span');
+              span.classList.add('index3');
+              span.textContent = index;
+              document.getElementById('three').appendChild(span);
+              document.getElementById('three').appendChild(createImageElement(index));
+          });
+      } else {
+          document.getElementById('three').style.display = 'none';
+      }
+
+      // Перевірка, чи є текстові дані в блоках "one" і "two"
+      let oneContent = document.getElementById('one').textContent.trim();
+      let twoContent = document.getElementById('two').textContent.trim();
+
+      let resultDiv = document.getElementById('result');
+      if (!oneContent && !twoContent) {
+          resultDiv.style.display = 'none';
+      } else {
+          resultDiv.style.display = 'block';
+      }
+  } else {
+      if (!osbData) console.log('Дані в сховищі "Osb" не знайдено.');
+      if (!rangeData) console.log('Дані в сховищі "range" не знайдено.');
+      if (!paraData) console.log('Дані в сховищі "para" не знайдено.');
+  }
+
+  // Модальне вікно
+  let modal = document.getElementById("modal");
+  let span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
+  }
+</script>
+</body>
+</html>
